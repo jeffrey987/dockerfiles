@@ -2,7 +2,7 @@
 # Dockerfile for opencart
 #
 
-FROM php:7.2-apache
+FROM php:7.4.21-apache
 MAINTAINER EasyPi Software Foundation
 
 RUN a2enmod rewrite
@@ -31,4 +31,3 @@ RUN set -xe \
     && mv admin/config-dist.php admin/config.php \
     && rm ${OPENCART_FILE} \
     && chown -R www-data:www-data /var/www
-
