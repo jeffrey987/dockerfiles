@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   opencart:
-    image: vimagick/opencart
+    image: jeffrey897/opencart
     ports:
       - "8000:80"
     volumes:
@@ -17,6 +17,6 @@ services:
     volumes:
       - ./data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=QWE123qwe
       - MYSQL_DATABASE=opencart
     restart: unless-stopped
