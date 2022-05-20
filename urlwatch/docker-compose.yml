@@ -1,7 +1,9 @@
+version: "3.8"
 services:
   urlwatch:
     image: vimagick/urlwatch
     volumes:
       - ./data:/root/.urlwatch
-      - ./data/crontab:/etc/crontabs/root
+    environment:
+      - EDITOR=/usr/bin/vi
     restart: unless-stopped

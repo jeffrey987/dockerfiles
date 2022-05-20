@@ -1,5 +1,5 @@
 #
-# Dockerfile for scrapyd (python2)
+# Dockerfile for scrapyd (python2) [deprecated]
 #
 
 FROM debian:buster
@@ -25,6 +25,7 @@ RUN set -xe \
                           libxslt1-dev \
                           python \
                           python-dev \
+                          tini \
                           vim-tiny \
     && apt-get install -y libtiff5 \
                           libtiff5-dev \
@@ -37,7 +38,7 @@ RUN set -xe \
                           libwebp-dev \
                           zlib1g \
                           zlib1g-dev \
-    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python \
+    && curl -sSL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python \
     && pip install --no-cache-dir git+https://github.com/scrapy/scrapy.git@$SCRAPY_VERSION \
                    git+https://github.com/scrapy/scrapyd.git@$SCRAPYD_VERSION \
                    git+https://github.com/scrapy/scrapyd-client.git \
@@ -67,4 +68,5 @@ COPY ./scrapyd.conf /etc/scrapyd/
 VOLUME /etc/scrapyd/ /var/lib/scrapyd/
 EXPOSE 6800
 
+ENTRYPOINT ["tini", "--"]
 CMD ["scrapyd", "--pidfile="]

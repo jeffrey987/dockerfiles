@@ -6,17 +6,40 @@ ghost
 ## docker-compose.yml
 
 ```yaml
-ghost:
-  image: ghost:alpine
-  ports:
-    - "127.0.0.1:2368:2368"
-  volumes:
-    - ./data:/var/lib/ghost/content
-  environment:
-    - url=https://blog.easypi.duckdns.org
-    - database__client=sqlite3
-    - database__connection__filename=/var/lib/ghost/content/data/ghost.db
-  restart: unless-stopped
+version: "3.8"
+
+services:
+
+  ghost:
+    image: ghost:alpine
+    ports:
+      - "2368:2368"
+    volumes:
+      - ./data:/var/lib/ghost/content
+    environment:
+      - url=https://blog.easypi.duckdns.org
+      - database__client=sqlite3
+      - database__connection__filename=/var/lib/ghost/content/data/ghost.db
+    restart: unless-stopped
+
+  backup:
+    image: offen/docker-volume-backup
+    environment:
+      # AWS_BUCKET_NAME=backups
+      # AWS_S3_PATH=ghost
+      # AWS_ACCESS_KEY_ID=******
+      # AWS_SECRET_ACCESS_KEY=******
+      - BACKUP_FILENAME=backup-ghost-%Y-%m-%dT%H-%M-%S.tar.gz
+      - BACKUP_PRUNING_PREFIX=backup-ghost-
+      - BACKUP_LATEST_SYMLINK=backup-ghost-latest.tar.gz
+      - BACKUP_RETENTION_DAYS=30
+    volumes:
+      - ./data:/backup/ghost:ro
+      - ./backups:/archive
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    depends_on:
+      - ghost
+    restart: unless-stopped
 ```
 
 ## Up and Running
@@ -24,6 +47,7 @@ ghost:
 ```bash
 $ docker-compose up -d
 $ curl https://blog.easypi.duckdns.org/ghost/
+$ docker-compose exec backup backup
 ```
 
 ## Setup SSL

@@ -28,7 +28,6 @@ A collection of delicious docker recipes.
 - [ ] ipset
 - [ ] irc
 - [ ] libreswan
-- [ ] mitmproxy
 - [ ] nagios
 - [ ] openswan
 - [ ] postfix
@@ -56,10 +55,12 @@ A collection of delicious docker recipes.
 
 ## IoT
 
-- [x] hass :+1:
-- [x] hbdg :+1:
+- [x] ~hass~
+- [x] hbdg
 - [x] node-red :+1:
+- [x] mqtt-io-arm
 - [x] mosquitto :+1:
+- [x] tile38-arm :+1:
 
 ## Automation
 
@@ -87,7 +88,6 @@ A collection of delicious docker recipes.
 - [x] collectd
 - [x] elastalert
 - [x] glances
-- [x] grafana
 - [x] graphite
 - [x] influxdb
 - [x] logstash
@@ -101,6 +101,7 @@ A collection of delicious docker recipes.
 - [x] alpine-arm :+1:
 - [x] apacheds
 - [x] aria2 :+1:
+- [x] ariang
 - [x] cadvisor
 - [x] casperjs :+1:
 - [x] freegeoip
@@ -108,13 +109,12 @@ A collection of delicious docker recipes.
 - [x] frp :cn:
 - [x] h2o
 - [x] httpbin :+1:
-- [x] mariadb
-- [x] mariadb-arm
 - [x] monit
 - [x] moodle :beetle:
 - [x] mosquitto
 - [x] motion-arm :+1:
 - [x] ndscheduler
+- [x] nfs
 - [x] nginx
 - [x] ntopng
 - [x] nullmailer
@@ -147,10 +147,19 @@ A collection of delicious docker recipes.
 - [x] webhook
 - [x] webkit :beetle:
 
+## Utility
+
+- [x] registry-cli
+
 ## Media
 
+- [x] aircast-arm :musical_note:
 - [x] cmus
 - [x] cmus-arm
+- [x] darkice :musical_note:
+- [x] deface
+- [x] dvr-scan :tv:
+- [x] editly :tv:
 - [x] ffmpeg
 - [x] ffmpeg-arm
 - [x] ffserver :beetle:
@@ -159,17 +168,20 @@ A collection of delicious docker recipes.
 - [x] minidlna
 - [x] mpd :musical_note:
 - [x] murmur
+- [x] node-media-server-arm :camera: :cn:
+- [x] obs-web-arm :joystick:
 - [x] openmeetings :camera:
+- [x] paddle-ocr
 - [x] plex :moneybag:
-- [x] red5 :+1:
-- [x] red5-arm :construction:
+- [x] red5 :+1: :camera:
+- [x] red5-arm :construction: :camera:
 - [x] rtmp-client-arm :+1:
 - [x] rtmp-server :camera:
 - [x] shairplay-arm
 - [x] shoutcast :musical_note:
 - [x] tesseract
 - [x] vnc2flv
-- [x] youtube-dl
+- [x] youtube-dl :tv:
 - [x] youtube-worker :beetle:
 
 ## Audio
@@ -179,10 +191,9 @@ A collection of delicious docker recipes.
 
 ## Web
 
-- [x] discuz :cn:
+- [x] ~discuz~ :cn: :skull:
 - [x] django-cms
 - [x] dokuwiki :+1:
-- [x] dokuwiki-arm :+1:
 - [x] gogs-arm :cn:
 - [x] hugo
 - [x] hugo-arm
@@ -198,6 +209,7 @@ A collection of delicious docker recipes.
 - [x] phpvirtualbox-arm
 - [x] revive
 - [x] tabula
+- [x] teleprompter
 - [x] tiddlywiki
 - [x] zoneminder :+1:
 
@@ -236,6 +248,7 @@ A collection of delicious docker recipes.
 - [x] haproxy-arm
 - [x] i2pd :ru:
 - [x] kcptun :cn:
+- [x] microsocks
 - [x] mtproxy
 - [x] mysql-proxy
 - [x] ngrok :+1:
@@ -280,7 +293,6 @@ A collection of delicious docker recipes.
 - [x] dnscrypt
     - [x] dnscrypt-proxy
     - [x] dnscrypt-server
-    - [x] ~dnscrypt-wrapper~
 - [x] dnsmasq
 - [x] dnsmasq-arm
 - [x] pdnsd
@@ -291,10 +303,13 @@ A collection of delicious docker recipes.
 - [x] ghcr.io/linuxserver/airsonic :musical_note:
 - [x] archivebox/archivebox
 - [x] docker.bintray.io/jfrog/artifactory-oss
+- [x] jeffail/benthos
 - [x] tutum/builder
+- [x] calendso/calendso
 - [x] browserless/chrome
 - [x] certbot
 - [x] codercom/code-server
+- [ ] registry.gitlab.com/commento/commento
 - [x] confluentinc
   - [x] cp-kafka-mqtt
   - [x] cp-kafka-rest
@@ -304,19 +319,23 @@ A collection of delicious docker recipes.
 - [x] daskdev
   - [x] dask
   - [x] dask-notebook
+- [x] deepquestai/deepstack
 - [x] appbaseio/dejavu :mag:
 - [x] cachethq/docker
 - [x] satishweb/doh-server
 - [x] snowzach/doods
 - [x] drone/drone
 - [x] drupal
-- [x] elastichq/elasticsearch-hq
-- [x] elasticdump/elasticsearch-dump
+- [x] elastichq/elasticsearch-hq :mag:
+- [x] elasticdump/elasticsearch-dump :mag:
 - [x] elk
+- [x] andris9/emailengine :moneybag:
+- [x] esphome/esphome
 - [x] quay.io/coreos/etcd
 - [x] audreyt/ethercalc
 - [x] flogo/flogo-docker
 - [x] mher/flower
+- [x] friendica
 - [x] ghost
 - [x] gitlab/gitlab-ce
 - [x] atlassianlabs/gostatsd
@@ -327,7 +346,14 @@ A collection of delicious docker recipes.
     - [ ] bash
     - [ ] python
 - [x] gogs/gogs :cn:
+- [x] gotify/server
+- [x] grafana/grafana
+- [x] hasura/graphql-engine
 - [x] haproxy
+- [x] healthchecks/healthchecks
+- [x] homeassistant/home-assistant
+- [x] h2non/imaginary
+- [x] jellyfin/jellyfin
 - [x] jenkins
     - [x] inbound-agent
     - [x] jenkins
@@ -336,15 +362,21 @@ A collection of delicious docker recipes.
 - [x] wurstmeister/kafka
 - [x] mailgun/kafka-pixy
 - [x] devopsfaith/krakend
+- [x] heartexlabs/label-studio
+- [x] mailhog/mailhog
 - [x] tootsuite/mastodon
+- [x] getmeili/meilisearch :mag:
+- [x] mitmproxy/mitmproxy
 - [x] deluan/navidrome :musical_note:
 - [x] netdata/netdata
 - [x] nextcloud
 - [x] sonatype/nexus3
 - [ ] jwilder/nginx-proxy
+- [x] tiangolo/nginx-rtmp :camera:
 - [x] jazzdd/phpvirtualbox
 - [x] sonatype/nexus3
 - [x] jupyter/notebook
+- [x] mariadb
 - [x] matomo
 - [x] metabase/metabase
 - [x] metasploitframework/metasploit-framework :skull:
@@ -352,19 +384,26 @@ A collection of delicious docker recipes.
 - [x] mongo
 - [x] ccrisan/motioneye
 - [x] neo4j
-- [x] erichough/nfs-server
 - [x] luzifer/nginx-sso
 - [x] n8nio/n8n
+- [x] illuspas/node-media-server :cn:
 - [x] notaitech/nudenet
 - [x] odoo
+- [x] ohmyform
+    - [x] ohmyform/api
+    - [x] ohmyform/ui
 - [x] osixia/openldap
+- [x] openresty/openresty
 - [x] kylemanna/openvpn
 - [x] campbellsoftwaresolutions/osticket
 - [x] outlinewiki/outline
 - [x] gabekangas/owncast
 - [x] owncloud
+- [x] dpage/pgadmin4
+- [x] phplist/phplist
 - [x] phpmyadmin
 - [x] pihole/pihole
+- [x] mcr.microsoft.com/playwright
 - [x] portainer/portainer :+1:
 - [x] postgres
 - [x] postgrest/postgrest
@@ -387,10 +426,14 @@ A collection of delicious docker recipes.
       - [x] chrome
       - [x] firefox
       - [x] vnc
-    - selenoid-ui
+    - [x] selenoid-ui
+- [x] ansiblesemaphore/semaphore
 - [x] sentry
 - [x] atmoz/sftp
+- [x] quay.io/outline/shadowbox
+- [x] shlinkio/shlink
 - [x] snipe/snipe-it
+- [x] valeriansaliou/sonic
 - [x] scrapinghub/splash
 - [x] deezer/spleeter
 - [x] teamatldocker
@@ -398,12 +441,18 @@ A collection of delicious docker recipes.
     - [x] jira
 - [x] strapi/strapi
 - [x] amancevice/superset
-- [x] v2ray/official :cn:
+- [x] tensorflow
+    - [x] serving
+- [x] tile38/tile38
 - [x] traefik
+- [x] trinodb/trino
+- [x] louislam/uptime-kuma
+- [x] v2ray/official :cn:
 - [x] mpromonet/v4l2rtspserver :camera:
 - [x] centurylink/watchtower
 - [x] wekanteam/wekan
 - [x] requarks/wiki
+- [x] wordpress
 - [x] yourls
 - [x] ghcr.io/linuxserver/wireguard
 - [x] apache/zeppelin
@@ -439,6 +488,7 @@ __enter() {
 complete -F __enter enter
 ```
 
-## Stargazers over time
+## Star History
 
-[![Stargazers over time](https://starchart.cc/vimagick/dockerfiles.svg)](https://starchart.cc/vimagick/dockerfiles)
+[![Star History Chart](https://api.star-history.com/svg?repos=vimagick/dockerfiles&type=Timeline)](https://star-history.com/#vimagick/dockerfiles&Timeline)
+

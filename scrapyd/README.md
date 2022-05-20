@@ -1,6 +1,8 @@
 scrapyd
 =======
 
+> :warning: THIS PROJECT WAS MOVED TO: https://github.com/EasyPi/docker-scrapyd
+
 ![](http://dockeri.co/image/vimagick/scrapyd)
 
 [scrapy][1] is an open source and collaborative framework for extracting the
@@ -16,15 +18,18 @@ utility which allows you to deploy your project to a Scrapyd server.
 
 [scrapyrt][5] allows you to easily add HTTP API to your existing Scrapy project.
 
-[pillow][6] is the Python Imaging Library to support the ImagesPipeline.
+[Spidermon][6] is a framework to build monitors for Scrapy spiders.
 
-This image is based on `debian:buster`, 6 latest python packages are installed:
+[pillow][7] is the Python Imaging Library to support the ImagesPipeline.
+
+This image is based on `debian:buster`, 7 latest python packages are installed:
 
 - `scrapy`: git+https://github.com/scrapy/scrapy.git
 - `scrapyd`: git+https://github.com/scrapy/scrapyd.git
 - `scrapyd-client`: git+https://github.com/scrapy/scrapyd-client.git
 - `scrapy-splash`: git+https://github.com/scrapinghub/scrapy-splash.git
 - `scrapyrt`: git+https://github.com/scrapinghub/scrapyrt.git
+- `spidermon`: git+https://github.com/scrapinghub/spidermon.git
 - `pillow`: git+https://github.com/python-pillow/Pillow.git
 
 Please use this as base image for your own project.
@@ -34,32 +39,36 @@ Please use this as base image for your own project.
 ## docker-compose.yml
 
 ```yaml
-scrapyd:
-  image: vimagick/scrapyd:py3
-  ports:
-    - "6800:6800"
-  volumes:
-    - ./data:/var/lib/scrapyd
-    - /usr/local/lib/python3.7/dist-packages
-  restart: unless-stopped
+version: "3.8"
 
-scrapy:
-  image: vimagick/scrapyd:py3
-  command: bash
-  volumes:
-    - .:/code
-  working_dir: /code
-  restart: unless-stopped
+services:
 
-scrapyrt:
-  image: vimagick/scrapyd:py3
-  command: scrapyrt -i 0.0.0.0 -p 9080
-  ports:
-    - "9080:9080"
-  volumes:
-    - .:/code
-  working_dir: /code
-  restart: unless-stopped
+  scrapyd:
+    image: vimagick/scrapyd:py3
+    ports:
+      - "6800:6800"
+    volumes:
+      - ./data:/var/lib/scrapyd
+      - /usr/local/lib/python3.9/dist-packages
+    restart: unless-stopped
+
+  scrapy:
+    image: vimagick/scrapyd:py3
+    command: bash
+    volumes:
+      - .:/code
+    working_dir: /code
+    restart: unless-stopped
+
+  scrapyrt:
+    image: vimagick/scrapyd:py3
+    command: scrapyrt -i 0.0.0.0 -p 9080
+    ports:
+      - "9080:9080"
+    volumes:
+      - .:/code
+    working_dir: /code
+    restart: unless-stopped
 ```
 
 ## Run it as background-daemon for scrapyd
@@ -147,4 +156,5 @@ $ curl -s 'http://localhost:9080/crawl.json?spider_name=toscrape-css&callback=pa
 [3]: https://github.com/scrapy/scrapyd-client
 [4]: https://github.com/scrapinghub/scrapy-splash
 [5]: https://github.com/scrapinghub/scrapyrt
-[6]: https://github.com/python-pillow/Pillow
+[6]: https://github.com/scrapinghub/spidermon
+[7]: https://github.com/python-pillow/Pillow

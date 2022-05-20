@@ -1,16 +1,22 @@
 urlwatch
 ========
 
+> ⚠️ THIS PROJECT WAS MOVED TO: https://github.com/EasyPi/docker-urlwatch
+
 [urlwatch][1] is a tool for monitoring webpages for updates.
 
 ## docker-compose.yml
 
 ```yaml
-urlwatch:
-  image: vimagick/urlwatch
-  volumes:
-    - ./data:/root/.urlwatch
-  restart: unless-stopped
+version: "3.8"
+services:
+  urlwatch:
+    image: vimagick/urlwatch
+    volumes:
+      - ./data:/root/.urlwatch
+    environment:
+      - EDITOR=/usr/bin/vi
+    restart: unless-stopped
 ```
 
 ## urls.yaml
@@ -18,17 +24,22 @@ urlwatch:
 ```yaml
 ---
 
-url: "https://github.com/thp/urlwatch/releases/latest"
+name: urlwatch
+url: https://github.com/thp/urlwatch/tags
+user_visible_url: https://github.com/thp/urlwatch
 filter:
-- xpath: '(//div[contains(@class,"release-timeline-tags")]//h4)[1]/a'
+- xpath: '(//h4[@data-test-selector="tag-title"]/a)[1]'
 - html2text: re
+- strip:
 
 ---
 
-url: "https://github.com/shadowsocks/shadowsocks-libev/releases/latest"
+name: shadowsocks-libev
+url: https://api.github.com/repos/shadowsocks/shadowsocks-libev/releases/latest
+user_visible_url: https://github.com/shadowsocks/shadowsocks-libev
 filter:
-- css: 'div.f1>a'
-- html2text: re
+- shellpipe: 'jq -r .tag_name'
+- strip:
 
 ...
 ```
@@ -44,7 +55,7 @@ Successfully sent message to Slack
 1: https://github.com/thp/urlwatch/releases/latest
 2: https://github.com/shadowsocks/shadowsocks-libev/releases/latest
 >>> urlwatch --test-filter 2
-v3.2.5
+v3.3.5
 >>> exit
 ```
 
@@ -64,10 +75,12 @@ See the [crontab manpage for details on format](https://man7.org/linux/man-pages
 ### Mount the crontab file as a docker volume
 
 ```yaml
-urlwatch:
-  image: vimagick/urlwatch
-  volumes:
-    - ./data:/root/.urlwatch
-    - ./data/crontab:/etc/crontabs/root
-  restart: unless-stopped
+version: "3.8"
+services:
+  urlwatch:
+    image: vimagick/urlwatch
+    volumes:
+      - ./data:/root/.urlwatch
+      - ./data/crontab:/etc/crontabs/root
+    restart: unless-stopped
 ```

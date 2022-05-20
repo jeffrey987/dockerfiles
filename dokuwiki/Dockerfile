@@ -17,6 +17,7 @@ RUN set -xe \
         php7-json \
         php7-openssl \
         php7-pdo_sqlite \
+        php7-session \
         php7-sqlite3 \
         php7-xml \
         php7-zlib \
